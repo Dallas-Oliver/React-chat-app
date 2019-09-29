@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import generateUsername from "../RandomUsername";
 import { IChatMessage, ChatMessage } from "./ChatMessage";
 import InfoMessage from "./InfoMessage";
-import { Socket } from "dgram";
+import Video from "./video";
 
 interface IHomepageState {
   username: string;
@@ -32,38 +32,38 @@ class Homepage extends Component<{}, IHomepageState> {
     }
   };
 
-  anotherUserHasJoinedMessageHandler = (username: string) => {
-    const infoMessage = new InfoMessage(username);
+  UserHasJoinedMessageHandler = (username: string, message: string) => {
+    const infoMessage = new InfoMessage(username, message);
     this.setState({ messages: [...this.state.messages, infoMessage] });
   };
 
   componentDidMount() {
     const socket = io("localhost:4001");
+
     socket.on("connect", () => {
       socket.emit("welcome message", this.state.username);
     });
 
-    socket.on("joined", (username: string) => {
-      return this.anotherUserHasJoinedMessageHandler(username);
+    socket.on("joined", (username: string, message: string) => {
+      return this.UserHasJoinedMessageHandler(username, message);
     });
 
+    socket.on("chat message", (messageItem: IChatMessage) => {
+      console.log(messageItem, this.state.messages);
+      this.setState({ messages: [...this.state.messages, messageItem] });
+    });
     this.setState({ socket: socket });
-  }
-
-  chatMessageReceivedHandler() {
-    if (this.state.socket !== null) {
-      this.state.socket.on("chat message", (messageItem: IChatMessage) => {
-        console.log(messageItem);
-        this.setState({ messages: [...this.state.messages, messageItem] });
-      });
-    }
   }
 
   render() {
     return (
-      <div>
-        <Chat messages={this.state.messages} />
-        <ChatInput submitMessage={this.submitMessageHandler} />
+      <div className="homepage">
+        <section className="chat-element">
+          <Chat messages={this.state.messages} />
+          <ChatInput submitMessage={this.submitMessageHandler} />
+        </section>
+
+        <Video />
       </div>
     );
   }

@@ -1,12 +1,14 @@
 import uuid from "uuid";
 
 export interface IChatMessage {
+  type: string;
   message: string;
   id: string;
   username: string;
 }
 
 export class ChatMessage implements IChatMessage {
+  type = "ChatMessage";
   username: string;
   message: string;
   id: string;

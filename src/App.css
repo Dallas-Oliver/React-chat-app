@@ -1,33 +1,79 @@
+html,
+body {
+  height: 100%;
+  margin: 0px;
+}
+
+#root {
+  height: 100%;
+  display: block;
+  overflow: auto;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.homepage {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0px 50px 30px;
+  font-size: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat-element {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.dialogue-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex: 1;
+  font-size: 1.5rem;
+  padding: 10px;
+
+  margin: 8px;
+}
+
+.chat-message {
+  text-align: left;
+}
+
+.message-content {
+  word-wrap: break-word;
+}
+
+.input-form {
+  float: left;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  font-size: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-control {
+  font-size: 1.5rem;
+  padding: 20px 0px 20px 15px;
+}
+
+.video-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.video-element {
+  margin: 50px;
+  flex-grow: 1;
 }

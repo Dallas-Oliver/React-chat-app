@@ -26,14 +26,17 @@ class ChatInput extends Component<IChatInputProps, IChatInputState> {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form className="form-group input-form" onSubmit={this.onSubmit}>
         <input
+          className="form-control"
           type="text"
           value={this.state.message}
           onChange={e => this.setState({ message: e.target.value })}
           placeholder="chat here..."
         />
-        <button type="submit">Chat</button>
+        <button className="btn btn-info" type="submit">
+          Chat
+        </button>
       </form>
     );
   }

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import ChatMessageRenderer from "./ChatMessageRenderer";
 import InfoMessageRenderer from "./InfoMessageRenderer";
-import { IChatMessage, ChatMessage } from "./ChatMessage";
-import InfoMessage from "./InfoMessage";
+import { IChatMessage } from "./ChatMessage";
 
 interface IChatProps {
   messages: IChatMessage[];
@@ -10,15 +9,20 @@ interface IChatProps {
 
 class Chat extends Component<IChatProps> {
   render() {
-    // eslint-disable-next-line
-    return this.props.messages.map(message => {
-      if (message instanceof InfoMessage) {
-        return <InfoMessageRenderer message={message} key={message.id} />;
-      } else if (message instanceof ChatMessage) {
-        return <ChatMessageRenderer message={message} key={message.id} />;
-      }
-    });
+    return (
+      <div className="dialogue-box">
+        {this.props.messages.map(message => {
+          if (message.type === "InfoMessage") {
+            return <InfoMessageRenderer message={message} key={message.id} />;
+          } else if (message.type === "ChatMessage") {
+            return <ChatMessageRenderer message={message} key={message.id} />;
+          }
+        })}
+      </div>
+    );
   }
 }
 
 export default Chat;
+
+//node --experimental-modules server.mjs

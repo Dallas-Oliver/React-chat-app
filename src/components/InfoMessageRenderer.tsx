@@ -15,9 +15,7 @@ export default class InfoMessageRenderer extends Component<
   render() {
     return (
       <div className="chat-message">
-        <span>{this.props.message.username}</span>
-        {": "}
-        <span>{this.props.message.message} has joined the chatroom!</span>
+        <span>{this.props.message.username} has joined the chatroom!</span>
       </div>
     );
   }
