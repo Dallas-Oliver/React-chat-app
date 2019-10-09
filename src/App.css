@@ -17,6 +17,19 @@ body {
   flex-direction: column;
 }
 
+.header {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px;
+  border-bottom: 1px solid rgba(243, 148, 148, 0.3);
+}
+
+.header-link {
+  padding: 5px;
+  font-size: 1.5rem;
+  color: purple;
+}
+
 .homepage {
   height: 100%;
   display: flex;
@@ -39,28 +52,30 @@ body {
   flex: 1;
   font-size: 1.5rem;
   padding: 10px;
-
   margin: 8px;
 }
 
 .chat-message {
+  display: flex;
+  flex-wrap: wrap;
   text-align: left;
 }
 
 .message-content {
-  word-wrap: break-word;
+  display: block;
 }
 
-.input-form {
-  float: left;
-  grid-row-start: 2;
-  grid-row-end: 2;
-  font-size: 2rem;
+.input-form > * {
+  padding: 0px 10px;
+  margin: 5px;
 }
 
 .form-group {
+  float: left;
+  font-size: 2rem;
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .form-control {
@@ -74,6 +89,22 @@ body {
 }
 
 .video-element {
-  margin: 50px;
+  margin: 5px;
   flex-grow: 1;
+}
+
+.create-account-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.create-account-form {
+  display: flex;
+  justify-content: center;
+}
+
+.create-account-form > * {
+  margin: 5px;
 }

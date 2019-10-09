@@ -1,9 +1,15 @@
-import express from "express";
-import socketIO from "socket.io";
-import http from "http";
+const express = require("express");
+const socketIO = require("socket.io");
+const http = require("http");
+const userRouter = require("./src/routers/routes");
+
+require("dotenv").config();
 
 const app = express();
-const port = 4001;
+
+app.use(express.json());
+app.use(userRouter);
+const port = 3000;
 
 const server = http.createServer(app);
 const io = socketIO(server);

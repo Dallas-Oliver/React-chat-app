@@ -1,18 +1,33 @@
 import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Login from "./components/pages/Login";
+import CreateAccount from "./components/pages/Login";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Homepage from "./components/Homepage";
+import ChatRoom from "./components/ChatRoom";
+
+// interface IAppState {
+//   loginSuccessful: boolean;
+// }
 
 class App extends Component {
+  // constructor({}, state: IAppState) {
+  //   super({}, state);
+  //   this.state = {
+  //     loginSuccessful: false
+  //   };
+  // }
+
+  // redirect = () => {
+  //   this.setState({ loginSuccessful: true });
+  // };
+
   render() {
     return (
       <Router>
         <div className="App">
           <Header />
-          <Route exact={true} path="/" render={() => <Homepage />} />
-          <Route path="/login" component={Login} />
+          <Route path="/chatroom" render={() => <ChatRoom />} />
+          <Route exact path="/" render={() => <CreateAccount />} />
         </div>
       </Router>
     );

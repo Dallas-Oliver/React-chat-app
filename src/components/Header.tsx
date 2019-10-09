@@ -1,21 +1,19 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 class Header extends Component {
   render() {
     return (
-      <header style={headerSyles}>
-        <h1>Chat App</h1>
-        <Link to="/">Home</Link> | <Link to="/login">Login</Link>
+      <header className="header">
+        <NavLink className="header-link" to="/chatroom">
+          Chatroom
+        </NavLink>{" "}
+        <NavLink className="header-link" to="/">
+          Login
+        </NavLink>
       </header>
     );
   }
 }
-
-const headerSyles = {
-  padding: "20px",
-  background: "#333",
-  color: "#fff"
-};
 
 export default Header;

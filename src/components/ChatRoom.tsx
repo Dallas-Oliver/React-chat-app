@@ -13,11 +13,11 @@ interface IHomepageState {
   messages: IChatMessage[];
 }
 
-class Homepage extends Component<{}, IHomepageState> {
+class ChatRoom extends Component<{}, IHomepageState> {
   constructor(props: {}, state: Readonly<IHomepageState>) {
     super(props, state);
     this.state = {
-      username: generateUsername(),
+      username: sessionStorage.getItem("username") || generateUsername(),
       socket: null,
       messages: []
     };
@@ -62,11 +62,10 @@ class Homepage extends Component<{}, IHomepageState> {
           <Chat messages={this.state.messages} />
           <ChatInput submitMessage={this.submitMessageHandler} />
         </section>
-
         <Video />
       </div>
     );
   }
 }
 
-export default Homepage;
+export default ChatRoom;

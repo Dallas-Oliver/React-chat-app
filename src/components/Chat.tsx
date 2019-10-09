@@ -24,5 +24,3 @@ class Chat extends Component<IChatProps> {
 }
 
 export default Chat;
-
-//node --experimental-modules server.mjs
