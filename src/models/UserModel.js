@@ -17,21 +17,17 @@ const userSchema = new Schema({
     required: true
   },
 
-  tokens: [
-    {
-      token: {
-        type: String,
-        required: false
-      }
-    }
-  ]
+  token: {
+    type: String,
+    required: false
+  }
 });
 
-userSchema.pre("save", async next => {
+userSchema.pre("save", async function(next) {
   // Hash the password before saving the user model
-  const user = this;
-  if (user.isModified("password")) {
-    user.password = await bcrypt.hash(user.password, 10);
+
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
   }
   next();
 });
@@ -40,8 +36,7 @@ userSchema.methods.generateAuthToken = async () => {
   // Generate an auth token for the user
   const user = this;
   const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY);
-  user.tokens.push({ token });
-  await user.save();
+  user.token = token;
   return token;
 };
 
